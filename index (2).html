@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Unknown Line</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe6f0;
+    text-align: center;
+    padding-top: 50px;
+  }
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  h1 { color: #e60073; }
+  #msg { font-size: 20px; margin: 20px 0; }
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+    color: white;
+    transition: 0.3s;
+  }
+  .yes { background: #ff4da6; }
+  .no { background: #999; position: relative; }
+  #resultArea { margin-top: 15px; font-size: 18px; }
+  audio { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Nh?c n?n -->
+<audio id="bgMusic" autoplay loop>
+  <source src="Download.mp4" type="audio/mp4">
+</audio>
+
+<div class="card">
+  <h1>G?i Chi Anh ??</h1>
+  <p>Em là Tùng — có di?u này em mu?n nói, th?ng th?n và chân thành.</p>
+  <div id="msg">Chi Anh, em thích ch?, làm ngiu em</div>
+
+  <div id="btnRow">
+    <button class="btn yes" onclick="choose(true)">Ð?NG Ý ??</button>
+    <button class="btn no" id="noBtn" onmouseover="moveNo()">KHÔNG ??</button>
+  </div>
+
+  <div id="resultArea"></div>
+</div>
+
+<script>
+let noBtn = document.getElementById('noBtn');
+let btnRow = document.getElementById('btnRow');
+let resultArea = document.getElementById('resultArea');
+let msgEl = document.getElementById('msg');
+
+function moveNo(){
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 100);
+  noBtn.style.position = 'absolute';
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+}
+
+function typeText(text, callback){
+  msgEl.innerHTML = '';
+  let i = 0;
+  let typing = setInterval(()=>{
+    msgEl.innerHTML += text.charAt(i);
+    i++;
+    if(i >= text.length){
+      clearInterval(typing);
+      if(callback) callback();
+    }
+  }, 100);
+}
+
+function choose(yes){
+  if(yes){
+    btnRow.style.display = 'none';
+    resultArea.innerHTML = "<strong style='color:#e60073'>Nh? nh?n cho @takashidz trong fb nha mãi iuuuuu ??</strong>";
+
+    typeText("Yay, anh yêu em :>", ()=>{
+      setTimeout(()=>{
+        window.location.href = "https://discord.com/channels/@me/1402438903562113024";
+      }, 5000);
+    });
+
+  } else {
+    moveNo();
+  }
+}
+</script>
+
+</body>
+</html>
